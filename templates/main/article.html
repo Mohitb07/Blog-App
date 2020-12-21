@@ -24,49 +24,52 @@
 <div class = "fontclassic">
   <div id = "header"?>
       <br><br><br><br><h1 style="text-align:center;">{{ article.title }}</h1>
-      <h3>Created-At:{{ article.createdAt }}</h3>
-      <h4>Written By:
+      <h3 class="ml-5">Created-At:{{ article.createdAt }}</h3>
+      <h4 class="ml-5">Written By:
           {% for author in article.authors.all %}
               <a href ="{% url 'get_author' author.id %}">
-              {{ author }},
+              {{ author }}
               </a>
           {% endfor %}
       </h4>
       <div>
 
-          <p style="text-align: center; max-width: 100%; white-space: pre-wrap;">
+          <p  class="lead container" style="margin-top: 5rem;text-align: center; max-width: 90%; white-space: pre-wrap;">              
+              {{article.content}}
               
-              {{article.content}}}
-
-
               
-          </p>
+          </p>    
+          
 
-        
-          <form action ="" method="POST"> 
-            <div class="form-group">
-                {% csrf_token %}
-                <input type="text" name="Comment" class="form-control" placeholder="write a  comment"><br><br>
-                <h4 style="text-align:center;"><button type="sumbit" class="btn btn-primary mb-2">Submit</button>
-                    <button type="reset" class="btn btn-primary mb-2">Reset</button></h4>
-            </div>
-        
-          </form>
-
-          <div class = "font">
 
             <div class="content container" data-aos="fade-right">
                 <div class="row" data-aos="fade-right">
                     <div class="col-md-8" data-aos="fade-right">
                       <div class="blog_posts" data-aos="fade-right">
-                        <h3> comments </h3>
+                        <h3 style="margin-top: 4rem;"> Comments :-</h3>
+                        <form action ="" method="POST"> 
+                          <div class="form-group container">
+                              {% csrf_token %}
+                              <input type="text" name="Comment" class="form-control" placeholder="write a  comment"><br><br>
+                              <h4 style="text-align:center;"><button type="sumbit" class="btn btn-primary mb-2">Post</button>
+                                  <button type="reset" class="btn btn-primary mb-2">Reset</button></h4>
+                          </div>
+                      
+                        </form>
                         {% for comments in  comment  %}       
                         <div class="jumbotron" style="margin-left: auto;margin-right: auto;margin-top: 11%;" data-aos="fade-right">
                         <div class="post">
                             
 
-                            <div class="">
-                                <p>: {{ comments }}</p>
+                            <div class="lead" style="color: black;">
+                                <p style="font-size: 40px;">{{ comments }}</p>
+                                <h4 style="font-size: 20px;" class="ml-1">By:
+                                  {% for author in article.authors.all %}
+                                      <a href ="{% url 'get_author' author.id %}">
+                                      {{ author }}
+                                      </a>
+                                  {% endfor %}
+                              </h4>
                             </div>
                             
                         </div>
@@ -80,10 +83,7 @@
                     </div>
                 </div>
             </div>
-          </div>
-
-          
-        </p> 
+         </p> 
       </div>
         
   </div>

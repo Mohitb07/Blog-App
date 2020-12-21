@@ -4,7 +4,6 @@ from main import forms
 from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 
-
 def index(request):
     latest_articles=models.Article.objects.all().order_by('-createdAt')[:20]
     context ={

@@ -12,6 +12,7 @@
 </head>
 <body>
     <h2><a href="/">MY BLOG</a></h2>
+  
     <div class="row justify-content-center">
         <div class="col-lg-4 col-md-6 col-sm-8">
           <div class="card">
@@ -20,7 +21,7 @@
               <form method="post" novalidate>
                 {% csrf_token %}
                 <input type="hidden" name="next" value="{{ next }}"> <!--this is for query string in the url-->
-    
+                
                 {% include 'includes/formlogin.html' %}
                 <button type="submit" class="btn btn-primary btn-block">Log in</button>
               </form>
