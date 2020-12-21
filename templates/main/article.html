@@ -37,9 +37,55 @@
           <p style="text-align: center; max-width: 100%; white-space: pre-wrap;">
               
               {{article.content}}}
+
+
               
           </p>
+
+        
+          <form action ="" method="POST"> 
+            <div class="form-group">
+                {% csrf_token %}
+                <input type="text" name="Comment" class="form-control" placeholder="write a  comment"><br><br>
+                <h4 style="text-align:center;"><button type="sumbit" class="btn btn-primary mb-2">Submit</button>
+                    <button type="reset" class="btn btn-primary mb-2">Reset</button></h4>
+            </div>
+        
+          </form>
+
+          <div class = "font">
+
+            <div class="content container" data-aos="fade-right">
+                <div class="row" data-aos="fade-right">
+                    <div class="col-md-8" data-aos="fade-right">
+                      <div class="blog_posts" data-aos="fade-right">
+                        <h3> comments </h3>
+                        {% for comments in  comment  %}       
+                        <div class="jumbotron" style="margin-left: auto;margin-right: auto;margin-top: 11%;" data-aos="fade-right">
+                        <div class="post">
+                            
+
+                            <div class="">
+                                <p>: {{ comments }}</p>
+                            </div>
+                            
+                        </div>
+                        <hr style="border: 1px solid black;">
+                        </div>
+                    
+                        {% endfor %}
+          
+                      </div>
+          
+                    </div>
+                </div>
+            </div>
+          </div>
+
+          
+        </p> 
       </div>
+        
   </div>
 </div>
 

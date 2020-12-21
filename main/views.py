@@ -12,12 +12,27 @@ def index(request):
     }
     return render(request,'main/index.html',context)
 def article(request,pk):
-        article = models.Article.objects.get(pk = pk)
-        context= {  
-             "article" : article 
+            if request.method == "POST":
+                comment_data = {
+                    "comments": request.POST['Comment']
+                   
+                }
+                Comment= models.comment.objects.create(**comment_data )
+       
+        
+        
+            Comment = models.comment.objects.all()
+            
+             
+
+            article = models.Article.objects.get(pk = pk)
+            context= {  
+             "article" : article,
+             "comment" : Comment
+             
         
              }
-        return render(request, 'main/article.html',context)
+            return render(request, 'main/article.html',context)
 
 def author(request,pk):
         author = get_object_or_404(models.Author,pk = pk)

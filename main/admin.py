@@ -4,6 +4,7 @@ from main import models
 admin.site.register(
     [
         models.Author,
-        models.Article
+        models.Article,
+        models.comment
     ]
 )

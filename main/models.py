@@ -16,6 +16,12 @@ class Article(models.Model):
     content=models.TextField()
     authors=models.ManyToManyField('Author')
     category = models.CharField(max_length=255, default="Gaming")
-
+    
     def __str__(self):
         return self.title
+
+class comment(models.Model):
+    comments = models.CharField(max_length=50)
+    
+    def __str__(self):
+        return self.comments
